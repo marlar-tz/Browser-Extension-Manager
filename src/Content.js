@@ -12,20 +12,15 @@ const Content = () => {
                     <button className='border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full'>Inactive</button>
                 </div>
             </div>
-            <div className='bg-green-300 h-screen '>
-                {
+            <div className='border-2 border-red-300 h-screen overflow-auto'>
+                { data &&
                     data.map(ext => (
-                        <div key={ext.name}>
+                        <div className="border-2 border-purple-400" key={ext.name}>
                             <img src={ext.logo} alt="logo" />
                             {ext.name}
-
-
                             {ext.description}
 
                         </div>
-
-
-
                     ))
                 }
             </div>
