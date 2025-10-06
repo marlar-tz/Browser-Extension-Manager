@@ -1,6 +1,23 @@
-import data from "./data.json";
+import {useEffect,useState} from 'react';
 
 const Content = () => {
+
+    const [data,setData] = useState([]);
+    const [error,setError] = useState(null);
+
+    useEffect(()=>{
+        
+            fetch('/data.json')
+            .then(res => {
+                if(!res.ok){
+                    throw Error('could not fetch the data from that resource');
+                }
+                return res.json()})
+            .then(fetchData => setData(fetchData))
+            .catch(err=>{
+                setError(err.message)
+            })
+        },[]);
 
     return (
         <div className='w-3/4 max-md:w-5/6 h-screen' >
@@ -12,6 +29,7 @@ const Content = () => {
                     <button className='border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full'>Inactive</button>
                 </div>
             </div>
+            {error && <div>{error} </div>}
             <div className='grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-4'>
                 {data &&
                     data.map(ext => (
@@ -24,9 +42,9 @@ const Content = () => {
 
                                 </div>
                             </div>
-                            <div className='flex justify-between px-3 mb-4'>
+                            <div className='flex justify-between items-center px-3 mb-4'>
                                 <button className='border border-green-400 py-1 px-2 rounded-full'>Remove</button>
-                                <input type="text" />
+                                <input className="switch" type="checkbox" defaultChecked={ext.isActive} />
                             </div>
 
                         </div>
