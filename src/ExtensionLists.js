@@ -28,7 +28,7 @@ const ExtensionLists = ( {data , onToggle }) => {
                             </div>
                         </div>
                         <div className='flex justify-between items-center px-3 mb-4'>
-                            <button className='border border-green-400 py-1 px-2 rounded-full'>Remove</button>
+                            <button className='border border-green-400 py-1 px-2 rounded-full hover:bg-green-300'>Remove</button>
                             <input className="switch" type="checkbox" defaultChecked={ext.isActive} onChange={(e)=> handleSubmit(e,ext.name)} />
 
 

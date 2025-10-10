@@ -5,6 +5,7 @@ const Content = () => {
     const [allData, setAllData] = useState([]);
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
+     const [activeFilter, setActiveFilter] = useState("all");
 
     useEffect(() => {
 
@@ -26,6 +27,7 @@ const Content = () => {
     }, []);
 
     const filterData = (status) => {
+        setActiveFilter(status);
         if (status === 'all') {
             setData(allData);
         } else {
@@ -36,12 +38,38 @@ const Content = () => {
     };
 
     const handleToggle = (name ,newStatus) => {
-        const updatedAllData = allData.map(ext => 
+        setTimeout(()=>{
+            const updatedAllData = allData.map(ext => 
             ext.name === name ? {...ext, isActive: newStatus}:ext
         );
-        
-        setData(updatedAllData);
         setAllData(updatedAllData);
+        // setData(prevData => {
+        //     if(prevData.length === allData.length){
+        //         return updatedAllData;
+        //     }
+
+        //     const isShowingActive = prevData.every(ext =>ext.isActive === true);
+        //     const isShowingInactive = prevData.every(ext=> ext.isActive === false);
+
+        //     if(isShowingActive){
+        //         return updatedAllData.filter(ext => ext.isActive ===true);
+        //     }else if(isShowingInactive){
+        //         return updatedAllData.filter(ext => ext.isActive ===false);
+        //     }else{
+        //         return updatedAllData;
+        //     }
+        // });
+         if (activeFilter === 'all') {
+                setData(updatedAllData);
+            } else if (activeFilter === true || activeFilter === 'active') {
+                setData(updatedAllData.filter(ext => ext.isActive));
+            } else if (activeFilter === false || activeFilter === 'inactive') {
+                setData(updatedAllData.filter(ext => !ext.isActive));
+            }
+
+        },800);
+        
+        
         
     };
 
@@ -54,9 +82,9 @@ const Content = () => {
                 <h1 className='text-xl font-bold '>Extensions List</h1>
                 <div className="max-sm:my-4">
 
-                    <button onClick={() => filterData("all")} className='border border-neutral-400 hover:bg-red-300 px-3 py-1 rounded-full max-sm:mr-2 '>All</button>
-                    <button onClick={() => filterData(true)} className='border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full max-sm:mr-2'>Active</button>
-                    <button onClick={() => filterData(false)} className='border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full'>Inactive</button>
+                    <button onClick={() => filterData("all")} className={`border border-neutral-400 hover:bg-red-300 px-3 py-1 rounded-full max-sm:mr-2 ${activeFilter === "all" ? "bg-red-300" : ""}`}>All</button>
+                    <button onClick={() => filterData(true)} className={`border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full max-sm:mr-2 ${activeFilter === true ? "bg-red-300" : ""}`}>Active</button>
+                    <button onClick={() => filterData(false)} className={`border border-neutral-400 hover:bg-red-300 px-3 py-1 ml-2 rounded-full ${activeFilter === false ? "bg-red-300" : ""}`}>Inactive</button>
 
 
                 </div>
