@@ -67,11 +67,21 @@ const Content = () => {
                 setData(updatedAllData.filter(ext => !ext.isActive));
             }
 
-        },800);
-        
-        
-        
+        },800);  
     };
+
+
+    const handleDelete =(name) => {
+        const newLists = allData.filter(d =>d.name !== name);
+        setAllData(newLists);
+        if (activeFilter === 'all') {
+                setData(newLists);
+            } else if (activeFilter === true || activeFilter === 'active') {
+                setData(newLists.filter(ext => ext.isActive));
+            } else if (activeFilter === false || activeFilter === 'inactive') {
+                setData(newLists.filter(ext => !ext.isActive));
+            }
+    }
 
 
 
@@ -90,7 +100,7 @@ const Content = () => {
                 </div>
             </div>
             {error && <div>{error}</div>}
-            <ExtensionLists data={data} onToggle={handleToggle} />
+            <ExtensionLists data={data} onToggle={handleToggle} handleDelete={handleDelete} />
         </div>
     )
 }

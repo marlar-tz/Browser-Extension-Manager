@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-const ExtensionLists = ( {data , onToggle }) => {
+const ExtensionLists = ( {data , onToggle , handleDelete }) => {
 
     // const data = props.data;
     // const [inputValue, setInputValue] = useState('');
@@ -28,7 +28,7 @@ const ExtensionLists = ( {data , onToggle }) => {
                             </div>
                         </div>
                         <div className='flex justify-between items-center px-3 mb-4'>
-                            <button className='border border-green-400 py-1 px-2 rounded-full hover:bg-green-300'>Remove</button>
+                            <button className='border border-green-400 py-1 px-2 rounded-full hover:bg-green-300' onClick={()=>handleDelete(ext.name)}>Remove</button>
                             <input className="switch" type="checkbox" defaultChecked={ext.isActive} onChange={(e)=> handleSubmit(e,ext.name)} />
 
 
