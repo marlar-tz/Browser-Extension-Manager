@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ExtensionLists from './ExtensionLists';
 
 const Content = () => {
-
     const [allData, setAllData] = useState([]);
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
@@ -32,9 +31,21 @@ const Content = () => {
         } else {
             const newData = allData.filter(d => d.isActive === status);
             setData(newData);
-           
+
         }
-    }
+    };
+
+    const handleToggle = (name ,newStatus) => {
+        const updatedAllData = allData.map(ext => 
+            ext.name === name ? {...ext, isActive: newStatus}:ext
+        );
+        
+        setData(updatedAllData);
+        setAllData(updatedAllData);
+        
+    };
+
+
 
     return (
         <div className='w-3/4 max-md:w-5/6 h-screen' >
@@ -51,7 +62,7 @@ const Content = () => {
                 </div>
             </div>
             {error && <div>{error}</div>}
-            <ExtensionLists data={data} />
+            <ExtensionLists data={data} onToggle={handleToggle} />
         </div>
     )
 }
