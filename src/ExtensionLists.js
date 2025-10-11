@@ -22,7 +22,7 @@ const ExtensionLists = ( {data , onToggle , handleDelete }) => {
                         <div className='flex justify-center items-start h-36 pt-4 px-3'>
                             <img className='object-scale-down' src={ext.logo} alt="logo" />
                             <div className='ml-2'>
-                                <p>{ext.name}</p>
+                                <p className="text-darkblue font-bold text-lg">{ext.name}</p>
                                 <p>{ext.description}</p>
 
                             </div>

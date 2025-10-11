@@ -89,7 +89,7 @@ const Content = () => {
         <div className='w-3/4 max-md:w-5/6 h-screen' >
 
             <div className='flex max-sm:flex-col py-4 items-center justify-between'>
-                <h1 className='text-xl font-bold '>Extensions List</h1>
+                <h1 className='text-xl font-bold text-darkblue'>Extensions List</h1>
                 <div className="max-sm:my-4">
 
                     <button onClick={() => filterData("all")} className={`border border-neutral-400 hover:bg-red-300 px-3 py-1 rounded-full max-sm:mr-2 ${activeFilter === "all" ? "bg-red-300" : ""}`}>All</button>
