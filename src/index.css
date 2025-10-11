@@ -16,29 +16,29 @@ code {
     monospace;
 }
 
-.switch{
-  position:relative;
-  height:1.5rem;
-  width:3rem;
-  cursor:pointer;
-  appearance:none;
-  border-radius:9999px;
+.switch {
+  position: relative;
+  height: 1.5rem;
+  width: 3rem;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 9999px;
   background-color: rgba(100, 116, 139, 0.377);
 }
 
-.switch:checked{
-  background-color: hsl(3, 86%, 64%);
+.switch:checked {
+  background-color: hsl(3, 77%, 44%);
 }
 
-.switch:before{
-  position:absolute;
-  content:"";
-  left:calc(1.5rem - 1.6rem);
-  top:calc(1.5rem - 1.6rem);
-  display:block;
-  height:1.6rem;
-  width:1.6rem;
-  cursor:pointer;
+.switch:before {
+  position: absolute;
+  content: "";
+  left: calc(1.5rem - 1.6rem);
+  top: calc(1.5rem - 1.6rem);
+  display: block;
+  height: 1.6rem;
+  width: 1.6rem;
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(100, 116, 139, 0.527);
   border-radius: 9999px;
@@ -54,7 +54,8 @@ code {
   box-shadow: 0 0 0px 8px rgba(236, 72, 153, .15)
 }
 
-.switch:checked::before{
-  transform:translateX(100%);
-  border-color: hsl(3, 86%, 64%);
+.switch:checked::before {
+  transform: translateX(100%);
+  border-color: hsl(3, 77%, 44%);
 }
+
