@@ -16,7 +16,7 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-
+### Links
 - Solution URL: [Github URL](https://github.com/marlar-tz/Browser-Extension-Manager)
 - Live Site URL: [live site URL](https://browser-extension-manager-dun.vercel.app/)
 
