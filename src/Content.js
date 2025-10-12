@@ -30,10 +30,10 @@ const Content = () => {
         setActiveFilter(status);
         if (status === 'all') {
             setData(allData);
-        } else {
-            const newData = allData.filter(d => d.isActive === status);
-            setData(newData);
-
+        } else if (status === 'active') {
+            setData(allData.filter(d => d.isActive));
+        } else if (status === 'inactive') {
+            setData(allData.filter(d => !d.isActive));
         }
     };
 
@@ -45,9 +45,9 @@ const Content = () => {
             setAllData(updatedAllData);
             if (activeFilter === 'all') {
                 setData(updatedAllData);
-            } else if (activeFilter === true || activeFilter === 'active') {
+            } else if (activeFilter === 'active') {
                 setData(updatedAllData.filter(ext => ext.isActive));
-            } else if (activeFilter === false || activeFilter === 'inactive') {
+            } else if (activeFilter === 'inactive') {
                 setData(updatedAllData.filter(ext => !ext.isActive));
             }
 
@@ -60,13 +60,12 @@ const Content = () => {
         setAllData(newLists);
         if (activeFilter === 'all') {
             setData(newLists);
-        } else if (activeFilter === true || activeFilter === 'active') {
+        } else if (activeFilter === 'active') {
             setData(newLists.filter(ext => ext.isActive));
-        } else if (activeFilter === false || activeFilter === 'inactive') {
+        } else if (activeFilter === 'inactive') {
             setData(newLists.filter(ext => !ext.isActive));
         }
     }
-
 
 
     return (
@@ -76,9 +75,9 @@ const Content = () => {
                 <h1 className='text-xl font-bold text-darkblue dark:text-white'>Extensions List</h1>
                 <div className="max-sm:my-4">
 
-                    <button onClick={() => filterData("all")} className={`text-darkBlue200 border border-neutral-300 shadow-lg bg-white hover:bg-neutral-200 hover:text-neutral-700 px-3 py-1 mr-2 rounded-full max-sm:mr-2 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500 focus:bg-red500 focus:text-white dark:bg-neutral700 dark:text-white dark:border-none dark:hover:bg-neutral600   ${activeFilter === "all" ? "bg-red-500 text-white hover:bg-red-500 hover:text-white dark:text-darkBlue200 dark:bg-red-500 dark:hover:bg-red-500" : ""}`}>All</button>
-                    <button onClick={() => filterData(true)} className={`text-darkBlue200 border border-neutral-300 shadow-lg bg-white hover:bg-neutral-200 hover:text-neutral-700 px-3 py-1 mr-2 rounded-full max-sm:mr-2 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500 focus:bg-red500 focus:text-white dark:bg-neutral700 dark:text-white dark:border-none dark:hover:bg-neutral600 ${activeFilter === true ? "bg-red-500 text-white hover:bg-red-500 hover:text-white dark:text-darkBlue200 dark:bg-red-500 dark:hover:bg-red-500" : ""}`}>Active</button>
-                    <button onClick={() => filterData(false)} className={`text-darkBlue200 border border-neutral-300 shadow-lg bg-white hover:bg-neutral-200 hover:text-neutral-700 px-3 py-1 mr-2 rounded-full max-sm:mr-2 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500 focus:bg-red500 focus:text-white dark:bg-neutral700 dark:text-white dark:border-none dark:hover:bg-neutral600 ${activeFilter === false ? "bg-red-500 text-white hover:bg-red-500 hover:text-white dark:text-darkBlue200 dark:bg-red-500 dark:hover:bg-red-500" : ""}`}>Inactive</button>
+                    <button onClick={() => filterData("all")} className={`filter-btn ${activeFilter === "all" ? "filter-btn-active" : ""}`}>All</button>
+                    <button onClick={() => filterData("active")} className={`filter-btn ${activeFilter === "active" ? "filter-btn-active" : ""}`}>Active</button>
+                    <button onClick={() => filterData("inactive")} className={`filter-btn ${activeFilter === "inactive" ? "filter-btn-active" : ""}`}>Inactive</button>
 
 
                 </div>

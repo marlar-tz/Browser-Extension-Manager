@@ -16,6 +16,7 @@ code {
     monospace;
 }
 
+
 .switch {
   position: relative;
   height: 1.5rem;
@@ -58,4 +59,15 @@ code {
   transform: translateX(100%);
   border-color: hsl(3, 77%, 44%);
 }
+
+/* Base button styles */
+.filter-btn {
+  @apply text-darkBlue200 border border-neutral-300 shadow-lg bg-white hover:bg-neutral-200 hover:text-neutral-700 px-3 py-1 mr-2 rounded-full max-sm:mr-2 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500 dark:bg-neutral700 dark:text-white dark:border-none dark:hover:bg-neutral600;
+}
+
+/* Active state (red) */
+.filter-btn-active {
+  @apply bg-red-500 text-white hover:bg-red-500 hover:text-white dark:text-darkBlue200 dark:bg-red-500 dark:hover:bg-red-500;
+}
+
 
